@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 from model.textclassifier import textclassifier
 import torch
 from torchtext.datasets import AG_NEWS
@@ -22,6 +23,11 @@ text_pipeline = lambda x: vocab(tokenizer(x))
 label_pipeline = lambda x: int(x) - 1
 
 #Generate data batch and iterator
+=======
+from model.CNN import CNN
+import os
+from torch import nn, optim
+>>>>>>> origin/main
 from torch.utils.data import DataLoader
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -200,5 +206,12 @@ model = model.to("cpu")
 
 print("This is a %s news" %ag_news_label[predict(ex_text_str, text_pipeline)])
 
+<<<<<<< HEAD
+=======
+callbacks=[
+        dl.AccuracyCallback(input_key="logits", target_key="targets", topk_args=(1, 3, 5)),
+        dl.PrecisionRecallF1SupportCallback(input_key="logits", target_key="targets"),
+    ]
+>>>>>>> origin/main
 
 
